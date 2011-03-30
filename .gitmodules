@@ -1,0 +1,3 @@
+[submodule "htdocs/opt"]
+	path = htdocs/opt
+	url = http://git.ioc.cat/mahara-opt.git
