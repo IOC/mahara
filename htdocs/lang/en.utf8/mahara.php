@@ -796,6 +796,7 @@ $string['country.kh'] = 'Cambodia';
 $string['country.cm'] = 'Cameroon';
 $string['country.ca'] = 'Canada';
 $string['country.cv'] = 'Cape Verde';
+$string['country.ct'] = 'Catalonia';
 $string['country.ky'] = 'Cayman Islands';
 $string['country.cf'] = 'Central African Republic';
 $string['country.td'] = 'Chad';
