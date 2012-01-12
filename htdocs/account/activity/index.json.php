@@ -86,22 +86,15 @@ else if ($delete) {
         db_begin();
         // Remove parent pointers to messages we're about to delete
         // Use temp table in subselect for Mysql compat.
-        execute_sql("
-            UPDATE {notification_internal_activity}
-            SET parent = NULL
-            WHERE parent IN (
-                SELECT id
-                FROM (
-                   SELECT id FROM {notification_internal_activity} WHERE id IN ($strids) AND usr = ?
-                ) AS temp
-            )",
-            array($userid)
-        );
-        delete_records_select(
-            'notification_internal_activity',
-            "id IN ($strids) AND usr = ?",
-            array($userid)
-        );
+        $records = get_records_select_assoc('notification_internal_activity',
+                                            "id IN ($strids) AND usr = ?",
+                                            array($userid), '', 'id, type');
+        if ($records) {
+            $strids = join(',', array_keys($records));
+            execute_sql('UPDATE {notification_internal_activity}' .
+                        "SET parent = NULL WHERE parent IN ($strids)");
+            delete_records_select('notification_internal_activity', "id IN ($strids)");
+        }
         if ($deleteunread) {
             $newunread = $USER->add_unread(-$deleteunread);
         }
