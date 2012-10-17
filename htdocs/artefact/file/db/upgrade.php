@@ -393,7 +393,8 @@ function xmldb_artefact_file_upgrade($oldversion=0) {
     }
 
     if ($oldversion < 2011082201) {
-        $baseiter = new DirectoryIterator(get_config('dataroot') . 'artefact/file/originals/');
+        $dir = get_config('dataroot') . 'artefact/file/originals/';
+        $baseiter = is_dir($dir) ? new DirectoryIterator($dir) : array();
         foreach ($baseiter as $dir) {
             if ($dir->isDot()) continue;
             $dirpath = $dir->getPath() . '/' . $dir->getFilename();
