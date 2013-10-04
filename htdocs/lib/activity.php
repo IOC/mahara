@@ -474,7 +474,9 @@ abstract class ActivityType {
                 // go into the activity log as 'unread'
                 $changes->read = 0;
                 update_record('notification_internal_activity', $changes);
-                if (!$badnotification && !($e instanceof EmailDisabledException || $e instanceof InvalidEmailException)) {
+                if (!$badnotification && !($e instanceof EmailDisabledException ||
+                    $e instanceof InvalidEmailException ||
+                    $e instanceof EmailException)) {
                     // Admins should probably know about the error, but to avoid sending too many similar notifications,
                     // save an initial prefix of the message being sent and throw away subsequent exceptions with the
                     // same prefix.  To cut down on spam, it's worth missing out on a few similar messages.
