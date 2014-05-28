@@ -138,8 +138,8 @@ function smarty($javascript = array(), $headers = array(), $pagestrings = array(
 
                     $adv_buttons = array(
                         "undo,redo,separator,bold,italic,underline,separator,justifyleft,justifycenter,justifyright,justifyfull,separator,bullist,numlist,separator,link,unlink,separator,code,fullscreen",
-                        "bold,italic,underline,strikethrough,separator,forecolor,backcolor,separator,justifyleft,justifycenter,justifyright,justifyfull,separator,hr,emotions,image{$spellchecker},cleanup,separator,link,unlink,separator,code,fullscreen",
-                        "undo,redo,separator,bullist,numlist,separator,tablecontrols,separator,cut,copy,paste,pasteword",
+                        "bold,italic,underline,strikethrough,separator,forecolor,backcolor,separator,justifyleft,justifycenter,justifyright,justifyfull,separator,hr,emotions,image{$spellchecker},charmap,cleanup,separator,link,unlink,separator,code,fullscreen",
+                        "undo,redo,separator,bullist,numlist,outdent,indent,separator,tablecontrols,separator,cut,copy,paste,pasteword",
                         "fontselect,separator,fontsizeselect,separator,formatselect",
                     );
 
