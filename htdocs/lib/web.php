@@ -641,8 +641,8 @@ EOF;
                 'data'   => progressbar_sideblock(true),
             );
         }
-
-        if (!$USER->is_logged_in() && !(get_config('siteclosed') && get_config('disablelogin'))) {
+        if (($_SERVER['SCRIPT_FILENAME'] === get_config('docroot') . 'register.php')
+            && !$USER->is_logged_in() && !(get_config('siteclosed') && get_config('disablelogin'))) {
             $SIDEBLOCKS[] = array(
                 'name'   => 'login',
                 'weight' => -10,
