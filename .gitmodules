@@ -1,0 +1,6 @@
+[submodule "htdocs/opt"]
+	path = htdocs/opt
+	url = https://github.com/IOC/mahara-opt.git
+[submodule "htdocs/theme/ioc"]
+	path = htdocs/theme/ioc
+	url = https://github.com/IOC/mahara-theme-ioc.git
