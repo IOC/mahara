@@ -270,6 +270,11 @@ class Country {
             'match' => "^Costa Rica\$",
         ),
         array(
+            '2' => 'ct',
+            '3' => 'cat',
+            'match' => "^Catalunya\$",
+        ),
+        array(
             '2' => 'cu',
             '3' => 'cub',
             'match' => "^Cuba\$",
