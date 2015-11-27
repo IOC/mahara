@@ -815,6 +815,21 @@ function email_user($userto, $userfrom, $subject, $messagetext, $messagehtml='',
         throw new InvalidEmailException("Cannot send email to $usertoname with subject $subject. Error from phpmailer was: " . $mail->ErrorInfo);
     }
 
+    if (get_config('local_xtecmail_app')) {
+        require_once(get_config('docroot') . 'opt/xtecmail/lib.php');
+        $xtecmail = new xtecmail(get_config('local_xtecmail_app'),
+                                 get_config('local_xtecmail_sender'),
+                                 get_config('local_xtecmail_env'));
+        $content = $messagehtml ?: $messagetext;
+        $type = $messagehtml ? 'text/html' : 'text/plain';
+        try {
+            $xtecmail->send(array($to), array(), array(), $mail->From, $mail->Subject, $content, $type);
+        } catch (xtecmailerror $e) {
+            throw new EmailException("Couldn't send email to $usertoname with subject $subject.");
+        }
+        return true;
+    }
+
     $mail->WordWrap = 79;
 
     if ($messagehtml) {
