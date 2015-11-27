@@ -22,6 +22,10 @@ require_once(get_config('docroot') . 'lib/activity.php');
 require_once(get_config('docroot') . 'lib/file.php');
 require_once(get_config('docroot') . 'webservice/lib.php');
 
+if (ini_get('max_execution_time')) {
+    set_time_limit(3600);
+}
+
 // This is here for debugging purposes, it allows us to fake the time to test
 // cron behaviour
 $realstart = time();
