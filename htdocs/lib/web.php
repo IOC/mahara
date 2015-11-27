@@ -1979,6 +1979,7 @@ function getoptions_country() {
         'cm',
         'ca',
         'cv',
+        'ct',
         'ky',
         'cf',
         'td',
