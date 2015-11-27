@@ -759,7 +759,7 @@ EOF;
         }
 
         $isloginblockvisible = !$USER->is_logged_in() && !(get_config('siteclosed') && get_config('disablelogin'))
-                && get_config('showloginsideblock');
+                && get_config('showloginsideblock') && ($_SERVER['SCRIPT_FILENAME'] === get_config('docroot') . 'about.php');
         if ($isloginblockvisible) {
             $sideblocks[] = array(
                 'name'   => 'login',
