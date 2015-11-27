@@ -35915,7 +35915,8 @@ define("tinymce/ui/FormatControls", [
 				'Trebuchet MS=trebuchet ms,geneva,sans-serif;' +
 				'Verdana=verdana,geneva,sans-serif;' +
 				'Webdings=webdings;' +
-				'Wingdings=wingdings,zapf dingbats';
+				'Wingdings=wingdings,zapf dingbats;' +
+				'IPA Fonts=Charis SIL,Doulos SIL,Gentium Plus,Andika,sans-serif';
 
 			var items = [], fonts = createFormats(editor.settings.font_formats || defaultFontsFormats);
 
