@@ -31,6 +31,11 @@ if (php_sapi_name() != 'cli' && get_config('urlsecret') !== null) {
         die_info(get_string('accessdeniednourlsecret', 'error'));
     }
 }
+
+if (ini_get('max_execution_time')) {
+    set_time_limit(3600);
+}
+
 // This is here for debugging purposes, it allows us to fake the time to test
 // cron behaviour
 $realstart = time();
