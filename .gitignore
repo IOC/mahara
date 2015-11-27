@@ -35,3 +35,4 @@ mahara-*.zip
 logfile
 node_modules/
 htdocs/.externalToolBuilders/
+/config-mahara.php
