@@ -286,8 +286,9 @@ if ($CFG->sslproxy == true && parse_url($CFG->wwwroot, PHP_URL_SCHEME) !== 'http
 }
 
 // Make sure that we are using ssl if wwwroot expects us to do so
-if ($CFG->sslproxy === false && isset($_SERVER['REMOTE_ADDR']) && (!isset($_SERVER['HTTPS']) || strtolower($_SERVER['HTTPS']) == 'off') &&
-    parse_url($CFG->wwwroot, PHP_URL_SCHEME) === 'https'){
+if ((!isset($_SERVER['HTTP_X_FORWARDED_PROTO']) || (isset($_SERVER['HTTP_X_FORWARDED_PROTO']) && $_SERVER['HTTP_X_FORWARDED_PROTO'] != 'https'))
+    && $CFG->sslproxy === false && isset($_SERVER['REMOTE_ADDR']) && (!isset($_SERVER['HTTPS']) || strtolower($_SERVER['HTTPS']) == 'off') &&
+    parse_url($CFG->wwwroot, PHP_URL_SCHEME) === 'https') {
     redirect(get_relative_script_path());
 }
 if (!isset($CFG->noreplyaddress) && isset($CFG->wwwroot)) {
