@@ -54,7 +54,6 @@ $realstart = time();
 $fake = isset($argv[1]);
 $start = $fake ? strtotime($argv[1]) : $realstart;
 
-log_info('---------- cron running ' . date('r', $start) . ' ----------');
 
 if (!is_writable(get_config('dataroot'))) {
     log_warn("Unable to write to dataroot directory.");
@@ -107,7 +106,6 @@ foreach (plugin_types() as $plugintype) {
 
             $classname = generate_class_name($plugintype, $job->plugin);
 
-            log_info("Running $classname::" . $job->callfunction);
 
             safe_require($plugintype, $job->plugin, 'lib.php', 'require_once');
 
@@ -178,7 +176,6 @@ if ($jobs) {
             continue;
         }
 
-        log_info("Running core cron " . $job->callfunction);
 
         $function = $job->callfunction;
 
@@ -218,7 +215,6 @@ if (isset($argv[1])) {
     $diff = $realstart - $start;
     $finish = $finish - $diff;
 }
-log_info('---------- cron finished ' . date('r', $finish) . ' ----------');
 
 function cron_next_run_time($lastrun, $job) {
     $run_date = getdate($lastrun);
